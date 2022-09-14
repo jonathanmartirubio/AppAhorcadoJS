@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Ahorcado</title>
+    <script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+<header>
+    <!-- <img id="banner" src="img/banner.png" alt="banner ahorcado"> -->
+</header>
+<main> 
+    <div id="pantalla-inicial">
+        <!-- <img src="img/horca.png"> -->
+        <div id="form-puntuaciones">
+            Puntos Jugador 1: <input type="text" readonly name="pts-j1" id="pts-j1"/>
+            Puntos Jugador 2: <input type="text" readonly name="pts-j2" id="pts-j2"/>
+        </div>
+        <div id="form-nombres" style="display:block;">
+            Jugador 1: <input type="text" name="jugador1" id="jugador1"/>
+            Jugador 2: <input type="text" name="jugador2" id="jugador2"/>
+            <button id="btn-nombres" onclick="RecogerDatos('form-nombres')">Introducir</button>
+        </div>
+        <div id="form-palabra-j1" style="display:none;">
+            Jugador 1 Introduce una palabra: <input type="text" name="palabra-j1" id="palabra-j1">
+            <button id="btn-palabra-j1" onclick="RecogerDatos('form-palabra-j1')">Introducir</button>
+        </div>
+        <div id="form-letra-j1" style="display:none;">
+            Jugador 1 Introduce una letra: <input type="text" name="letra-j1" id="letra-j1">
+            <button id="btn-letra-j1" onclick="RecogerDatos('form-letra-j1')">Introducir</button>
+        </div>
+        <div id="form-letra-j2" style="display:none;">
+            Jugador 2 Introduce una letra: <input type="text" name="letra-j2" id="letra-j2">
+            <button id="btn-letra-j2" onclick="RecogerDatos('form-letra-j2')">Introducir</button>
+        </div>
+        <div id="form-palabra-j2" style="display:none;">
+            Jugador 2 Introduce una palabra: <input type="text" name="palabra-j2" id="palabra-j2">
+            <button id="btn-palabra-j2" onclick="RecogerDatos('form-palabra-j2')">Introducir</button>
+        </div>
+    </div>
+</main>
