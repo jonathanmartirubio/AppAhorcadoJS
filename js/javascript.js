@@ -7,12 +7,15 @@ function EmpezarPartida(){
     window.location.href = 'ahorcado.html';
 }
 function BuscarLetra(){
-    var encontrada = false;
+    var encontrada = true;
 
-    for (var i = 0; i < palabra.length; i++) {
+    for (var i = 0; i < palabra.length && encontrada == true; i++) {
         if(palabra[i] == letra[0]){
-            cadaux[i] = letra[0];
-            encontrada = true;
+            cadauxcorrecta[i] = letra[0];
+        }else{
+            stringIncorrectas += letra[0] + ' ';
+            CONT_INTENTOS--;
+            encontrada = false;
         }
     }
     return encontrada;
@@ -40,7 +43,10 @@ function RecogerDatos(id){
             var encontrada = BuscarLetra(); 
             if(encontrada){
                 document.getElementById("letras-correctas").value = cadaux;
-            }  
+            }else{
+                document.getElementById("letras-erroneas").value = stringIncorrectas;
+                document.getElementById("cont-intentos").value = CONT_INTENTOS;
+            }
         break;
     }
 }
