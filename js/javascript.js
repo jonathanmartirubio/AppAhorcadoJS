@@ -2,6 +2,8 @@ var jugador1, jugador2, palabra, letra;
 var CONT_INTENTOS = 6;
 var PTS_J1 = 0;
 var PTS_J2 = 0;
+var VICTORIA = 3;
+var TURNO = 1;
 let cadauxcorrecta;
 var stringIncorrectas = '';
 
@@ -17,11 +19,28 @@ function RellenarCadenaCorrecta(){
         }
     }
 }
+
+function RepartirPuntos(){
+    if(SolucionCorrecta()){
+        if(TURNO % 2 != 0){
+            PTS_J2++;
+        }else{
+            PTS_J1++;
+        }
+    }
+    if(CONT_INTENTOS == 0){
+        if(TURNO % 2 != 0){
+            PTS_J1++;
+        }else{
+            PTS_J2++;
+        }
+    }
+}
 function RellenarCadenaIncorrecta(){
     var rellenado = false;
     for(var i = 0; i < palabra.length && !rellenado; i++){
         if(palabra[i] != letra[0]){
-            stringIncorrectas += letra[0];
+            stringIncorrectas += ' ' + letra[0];
             rellenado = true;
         }
     }
@@ -56,6 +75,25 @@ function SolucionCorrecta(){
     return iguales;
 }
 
+function MostrarGanador(){
+    if(PTS_J1 == VICTORIA){
+        alert('victoria de jugador 1');
+    }else{
+        if(PTS_J2 == VICTORIA){
+            alert('victoria de jugador 2');
+        }
+    }
+}
+
+function ResetearValores(){
+    cadauxcorrecta = [];
+    CONT_INTENTOS = 6;
+    stringIncorrectas = '';
+    document.getElementById("letras-erroneas").value = stringIncorrectas;
+    document.getElementById("letras-correctas").value = cadauxcorrecta;
+    document.getElementById("cont-intentos").value = CONT_INTENTOS;
+}
+
 function ActualizarPuntuaciones(){
     document.getElementById("pts-j1").value = PTS_J1;
     document.getElementById("pts-j2").value = PTS_J2;
@@ -69,12 +107,14 @@ function RecogerDatos(id){
             FormPalabraJ1.style.display = "block";
             jugador1 = document.getElementById("jugador1").value;
             jugador2 = document.getElementById("jugador2").value;
+            ActualizarPuntuaciones();
         break;
         case 'form-palabra-j1':
             MostrarOcultarForms(id);
             var FormLetraJ2 = document.getElementById("form-letra-j2");
             FormLetraJ2.style.display = "block";
             palabra = document.getElementById("palabra-j1").value;
+            document.getElementById("cont-intentos").value = CONT_INTENTOS;
             cadauxcorrecta = new Array(palabra.length);
             cadauxcorrecta.fill('-');
         break;
@@ -84,16 +124,75 @@ function RecogerDatos(id){
             if(encontrada){
                 document.getElementById("letras-correctas").value = cadauxcorrecta.join(' ');
                     if(SolucionCorrecta()){
-                        PTS_J2++;
+                        RepartirPuntos();
+                        TURNO++;
                         ActualizarPuntuaciones();
+                        alert('palabra correcta: punto para jugador 2');
+                        ResetearValores();
+                        MostrarOcultarForms(id);
+                        var formPalabraJ2 = document.getElementById("form-palabra-j2");
+                        formPalabraJ2.style.display = "block";
+                        MostrarGanador();
                     }
-
             }else{
                 CONT_INTENTOS--;
+                if(CONT_INTENTOS == 0){
+                    RepartirPuntos();
+                    TURNO++;
+                    ActualizarPuntuaciones();
+                    alert('fin de los intentos: punto para jugador 1');
+                    ResetearValores();
+                    MostrarOcultarForms(id);
+                    var formPalabraJ2 = document.getElementById("form-palabra-j2");
+                    formPalabraJ2.style.display = "block";
+                    MostrarGanador();
+                }
                 document.getElementById("letras-erroneas").value = stringIncorrectas;
                 document.getElementById("cont-intentos").value = CONT_INTENTOS;
             }
         break;
+        case 'form-palabra-j2':
+            MostrarOcultarForms(id);
+            var FormLetraJ1 = document.getElementById("form-letra-j1");
+            FormLetraJ1.style.display = "block";
+            palabra = document.getElementById("palabra-j2").value;
+            document.getElementById("cont-intentos").value = CONT_INTENTOS;
+            cadauxcorrecta = new Array(palabra.length);
+            cadauxcorrecta.fill('-');
+            break;
+        case 'form-letra-j1':
+            letra = document.getElementById("letra-j1").value;
+            var encontrada = BuscarLetra(); 
+            if(encontrada){
+                document.getElementById("letras-correctas").value = cadauxcorrecta.join(' ');
+                    if(SolucionCorrecta()){
+                        RepartirPuntos();
+                        TURNO++;
+                        ActualizarPuntuaciones();
+                        alert('palabra correcta: punto para jugador 1');
+                        ResetearValores();
+                        MostrarOcultarForms(id);
+                        var formPalabraJ1 = document.getElementById("form-palabra-j1");
+                        formPalabraJ1.style.display = "block";
+                        MostrarGanador();
+                    }
+            }else{
+                CONT_INTENTOS--;
+                if(CONT_INTENTOS == 0){
+                    RepartirPuntos();
+                    TURNO++;
+                    ActualizarPuntuaciones();
+                    alert('fin de los intentos: punto para jugador 2');
+                    ResetearValores();
+                    MostrarOcultarForms(id);
+                    var formPalabraJ1 = document.getElementById("form-palabra-j1");
+                    formPalabraJ1.style.display = "block";
+                    MostrarGanador();
+                }
+                document.getElementById("letras-erroneas").value = stringIncorrectas;
+                document.getElementById("cont-intentos").value = CONT_INTENTOS;
+            }
+            break;
     }
 }
 
