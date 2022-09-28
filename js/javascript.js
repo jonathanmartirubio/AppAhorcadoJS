@@ -99,20 +99,39 @@ function ActualizarPuntuaciones(){
     document.getElementById("pts-j2").value = PTS_J2;
 }
 
+function NombreJugadores(){
+    jugador1 = document.getElementById("jugador1").value;
+    jugador2 = document.getElementById("jugador2").value;
+}
+
+function ResolverTurno(id){
+    if(SolucionCorrecta() || CONT_INTENTOS == 0){
+        RepartirPuntos();
+        TURNO++;
+        ActualizarPuntuaciones();
+        ResetearValores();
+        MostrarOcultarForms(id);
+        MostrarGanador();
+        if(id == 'form-letra-j2'){
+            MostrarOcultarForms('form-palabra-j2');
+        }else{
+            MostrarOcultarForms('form-palabra-j1');
+        }
+
+    }
+}
+
 function RecogerDatos(id){
    switch(id){
         case 'form-nombres':
             MostrarOcultarForms(id);
-            var FormPalabraJ1 = document.getElementById("form-palabra-j1");
-            FormPalabraJ1.style.display = "block";
-            jugador1 = document.getElementById("jugador1").value;
-            jugador2 = document.getElementById("jugador2").value;
+            MostrarOcultarForms('form-palabra-j1');
+            NombreJugadores();
             ActualizarPuntuaciones();
         break;
         case 'form-palabra-j1':
             MostrarOcultarForms(id);
-            var FormLetraJ2 = document.getElementById("form-letra-j2");
-            FormLetraJ2.style.display = "block";
+            MostrarOcultarForms('form-letra-j2');
             palabra = document.getElementById("palabra-j1").value;
             document.getElementById("cont-intentos").value = CONT_INTENTOS;
             cadauxcorrecta = new Array(palabra.length);
@@ -123,38 +142,17 @@ function RecogerDatos(id){
             var encontrada = BuscarLetra(); 
             if(encontrada){
                 document.getElementById("letras-correctas").value = cadauxcorrecta.join(' ');
-                    if(SolucionCorrecta()){
-                        RepartirPuntos();
-                        TURNO++;
-                        ActualizarPuntuaciones();
-                        alert('palabra correcta: punto para jugador 2');
-                        ResetearValores();
-                        MostrarOcultarForms(id);
-                        var formPalabraJ2 = document.getElementById("form-palabra-j2");
-                        formPalabraJ2.style.display = "block";
-                        MostrarGanador();
-                    }
+                        ResolverTurno(id);
             }else{
                 CONT_INTENTOS--;
-                if(CONT_INTENTOS == 0){
-                    RepartirPuntos();
-                    TURNO++;
-                    ActualizarPuntuaciones();
-                    alert('fin de los intentos: punto para jugador 1');
-                    ResetearValores();
-                    MostrarOcultarForms(id);
-                    var formPalabraJ2 = document.getElementById("form-palabra-j2");
-                    formPalabraJ2.style.display = "block";
-                    MostrarGanador();
-                }
+                ResolverTurno(id);
                 document.getElementById("letras-erroneas").value = stringIncorrectas;
                 document.getElementById("cont-intentos").value = CONT_INTENTOS;
             }
         break;
         case 'form-palabra-j2':
             MostrarOcultarForms(id);
-            var FormLetraJ1 = document.getElementById("form-letra-j1");
-            FormLetraJ1.style.display = "block";
+            MostrarOcultarForms('form-letra-j1');
             palabra = document.getElementById("palabra-j2").value;
             document.getElementById("cont-intentos").value = CONT_INTENTOS;
             cadauxcorrecta = new Array(palabra.length);
@@ -165,30 +163,10 @@ function RecogerDatos(id){
             var encontrada = BuscarLetra(); 
             if(encontrada){
                 document.getElementById("letras-correctas").value = cadauxcorrecta.join(' ');
-                    if(SolucionCorrecta()){
-                        RepartirPuntos();
-                        TURNO++;
-                        ActualizarPuntuaciones();
-                        alert('palabra correcta: punto para jugador 1');
-                        ResetearValores();
-                        MostrarOcultarForms(id);
-                        var formPalabraJ1 = document.getElementById("form-palabra-j1");
-                        formPalabraJ1.style.display = "block";
-                        MostrarGanador();
-                    }
+                ResolverTurno(id);
             }else{
                 CONT_INTENTOS--;
-                if(CONT_INTENTOS == 0){
-                    RepartirPuntos();
-                    TURNO++;
-                    ActualizarPuntuaciones();
-                    alert('fin de los intentos: punto para jugador 2');
-                    ResetearValores();
-                    MostrarOcultarForms(id);
-                    var formPalabraJ1 = document.getElementById("form-palabra-j1");
-                    formPalabraJ1.style.display = "block";
-                    MostrarGanador();
-                }
+                ResolverTurno(id);
                 document.getElementById("letras-erroneas").value = stringIncorrectas;
                 document.getElementById("cont-intentos").value = CONT_INTENTOS;
             }
