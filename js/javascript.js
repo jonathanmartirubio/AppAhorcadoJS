@@ -7,11 +7,6 @@ var TURNO = 1;
 let cadauxcorrecta;
 var stringIncorrectas = '';
 
-function EmpezarPartida(){
-    /*var formInicial = document.getElementById("form-nombres");
-    formInicial.style.display = "block";*/
-    window.location.href = 'ahorcado.html';
-}
 function RellenarCadenaCorrecta(){
     for(var i = 0; i < palabra.length; i++){
         if(palabra[i] == letra[0]){
