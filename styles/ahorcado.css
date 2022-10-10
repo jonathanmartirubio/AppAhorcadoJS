@@ -1,0 +1,14 @@
+#pantalla-jugar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#fondo-juego img {
+    width: 415px;
+}
+
+#form-nombres {
+    grid-column: 2/3;
+    grid-row: 1;
+}
