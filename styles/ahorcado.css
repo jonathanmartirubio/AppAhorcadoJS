@@ -1,0 +1,32 @@
+#pantalla-jugar {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    gap: 5px;
+}
+
+.panel-lateral {
+    display: grid;
+    background: url('../img/wood_texture_2.png');
+    background-size: 205px 415px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.panel-inferior {
+    display: grid;
+    background: url('../img/wood_texture.png');
+    background-repeat: no-repeat;
+    background-size: 625px 209px;
+    background-position: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    grid-column: 1 / 4;
+}
+
+#fondo-juego img {
+    width: 415px;
+}
