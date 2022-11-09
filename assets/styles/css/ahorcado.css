@@ -1,0 +1,150 @@
+html {
+    background: url('../../img/background.jpg') no-repeat center center fixed;
+}
+
+#pantalla-jugar {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    gap: 5px;
+}
+
+#fondo-juego img{
+    border-radius: 10px;
+    width: 414px;
+    box-shadow: 1px 1px 4px black;
+}
+
+.popup {
+    position: absolute;
+    background: url('../../img/carteles.png') no-repeat center center fixed;
+    background-size: 400px;
+    color: black;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    letter-spacing: 3px;
+    font-size: 25px;
+    font-family: 'Anderson-Thunderbirds-Are-GO';
+}
+
+.popup:hover{
+    cursor: pointer;
+}
+
+.panel-lateral {
+    display: grid;
+    background: url('../../img/wood_vertical.png');
+    box-shadow: 1px 1px 4px black;
+    background-size: 205px 415px;
+    border-radius: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 2px;
+    max-height: 415px;
+}
+
+#form-puntuaciones {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Dry-Goods-JL';
+    grid-column: 0.5fr;
+}
+#form-puntuaciones input[type="text"] {
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding: 5px 5px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-family: 'Dry-Goods-JL';
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.forms-lateral {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Dry-Goods-JL';
+}
+.forms-lateral input[type="text"]{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: 5px 5px;
+    height: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 3px;
+}
+
+.forms-lateral button {
+    font-family: 'Dry-Goods-JL';
+    padding: 10px;
+    background: rgb(177, 139, 90);
+    color: white;
+    letter-spacing: 2px;
+    font-size: 11px;
+    border-radius: 5px;
+    border: none;
+}
+
+.forms-lateral button:hover {
+    cursor: pointer;
+    background: rgb(202, 167, 122);
+}
+
+.panel-inferior {
+    display: grid;
+    border-radius: 10px;
+    background: url('../../img/wood_texture.png');
+    box-shadow: 1px 1px 4px black;
+    background-repeat: no-repeat;
+    background-size: 630px 209px;
+    background-position: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    grid-column: 1 / 4;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.forms-inferior {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Dry-Goods-JL';
+}
+
+.forms-inferior input[type='text']{
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding: 5px 5px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    font-family: 'Dry-Goods-JL';
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#fondo-juego img {
+    width: 415px;
+}
