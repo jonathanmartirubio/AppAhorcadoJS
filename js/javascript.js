@@ -24,7 +24,7 @@ function RepartirPuntos(){
             if(PTS_J2 < VICTORIA){
                 MostrarOcultarForms('puntos');
                 texto += jugador2;
-                document.getElementById('puntos').innerHTML = texto;
+                document.getElementById('cartel-puntos').innerHTML = texto;
                 texto = "";
             }
         }else{
@@ -32,7 +32,7 @@ function RepartirPuntos(){
             if(PTS_J1 < VICTORIA){
                 MostrarOcultarForms('puntos');
                 texto += jugador1;
-                document.getElementById('puntos').innerHTML = texto;
+                document.getElementById('cartel-puntos').innerHTML = texto;
                 texto = "";
             }
         }
@@ -43,7 +43,7 @@ function RepartirPuntos(){
             if(PTS_J1 < VICTORIA){
                 MostrarOcultarForms('puntos');
                 texto += jugador1;
-                document.getElementById('puntos').innerHTML = texto;
+                document.getElementById('cartel-puntos').innerHTML = texto;
                 texto = "";
             }
         }else{
@@ -51,7 +51,7 @@ function RepartirPuntos(){
             if(PTS_J2 < VICTORIA){
                 MostrarOcultarForms('puntos');
                 texto += jugador2;
-                document.getElementById('puntos').innerHTML = texto;
+                document.getElementById('cartel-puntos').innerHTML = texto;
                 texto = "";
             }
         }
